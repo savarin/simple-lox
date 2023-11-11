@@ -98,14 +98,14 @@ def evaluate(
             left_eval = evaluate(left, environment)
             right_eval = evaluate(right, environment)
 
-            return eval(f"{left_eval} {operator.value} {right_eval}")
+            return eval(f"{left_eval} {operator.value} {right_eval}")  # type: ignore[no-any-return]
 
         case expr.Relational(operator, left, right):
             left_eval = evaluate(left, environment)
             right_eval = evaluate(right, environment)
             relation = "==" if operator.value == "=" else operator.value
 
-            return eval(f"{left_eval} {relation} {right_eval}")
+            return eval(f"{left_eval} {relation} {right_eval}")  # type: ignore[no-any-return]
 
         case _:
             raise Exception(f"Exhaustive switch error on expression {str(expression)}.")
