@@ -57,8 +57,8 @@ def expect(
     if token.token_type == token_type:
         return token, counter
 
-    raise Exception(
-        f"Expected token with token type {token_type}, got {token.token_type}"
+    raise ValueError(
+        f"Expected token type '{token_type}' but found '{token.token_type}' at position {counter}. Token: {token}"
     )
 
 
@@ -97,7 +97,9 @@ def statement(tokens: List[scanner.Token], counter: int) -> Tuple[statem.Statem,
             return expression_statement(tokens, counter)
 
         case _:
-            raise Exception(f"Exhaustive switch error on token {tokens[counter]}.")
+            raise SyntaxError(
+                f"Unhandled token type: '{tokens[counter].token_type}' at position {counter}. Token: {tokens[counter]}"
+            )
 
 
 def block(tokens: List[scanner.Token], counter: int) -> Tuple[statem.Statem, int]:
@@ -424,4 +426,6 @@ def primary(tokens: List[scanner.Token], counter: int) -> Tuple[expr.Expr, int]:
             return expr.Name(token.value), counter
 
         case _:
-            raise Exception(f"Exhaustive switch error on token {tokens[counter]}")
+            raise SyntaxError(
+                f"Unrecognized primary expression type for token '{tokens[counter].token_type}' at position {counter}. Token: {tokens[counter]}"
+            )

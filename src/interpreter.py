@@ -100,7 +100,9 @@ def execute(statement: statem.Statem, environment: Environment) -> List[Optional
             return [None]
 
         case _:
-            raise Exception(f"Exhaustive switch error on statement {str(statement)}.")
+            raise TypeError(
+                f"Unrecognized statement type: '{type(statement).__name__}'. Statement: {statement}"
+            )
 
 
 def evaluate(
@@ -150,7 +152,9 @@ def evaluate(
             return eval(f"{left_eval} {relation} {right_eval}")  # type: ignore[no-any-return]
 
         case _:
-            raise Exception(f"Exhaustive switch error on expression {str(expression)}.")
+            raise TypeError(
+                f"Unrecognized expression type: '{type(expression).__name__}'. Expression: {expression}"
+            )
 
 
 def get(environment: Environment, name: str) -> int | statem.Function:
@@ -176,7 +180,9 @@ def get(environment: Environment, name: str) -> int | statem.Function:
         assert not isinstance(inner, int) and not isinstance(inner, statem.Function)
         return get(inner, name)
 
-    raise Exception(f"Name {name} not found across all environments.")
+    raise NameError(
+        f"Variable or function '{name}' not found in the current or enclosing environments. Environment: {environment}"
+    )
 
 
 def call(

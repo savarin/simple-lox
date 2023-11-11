@@ -136,6 +136,8 @@ def scan(source: str) -> List[Token]:
             counter += 1
 
         else:
-            raise Exception(f"Exhaustive switch error on character {source[counter]}.")
+            raise SyntaxError(
+                f"Unrecognized character '{source[counter]}' at position {counter}, line {line}."
+            )
 
     return tokens + [Token(TokenType.EOF, "EOF", line)]

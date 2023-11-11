@@ -77,4 +77,6 @@ def format(node: Union[expr.Expr, statem.Statem]) -> str:
             return f"var {format(name)} = {format(initializer)};\n"
 
         case _:
-            raise Exception(f"Exhaustive switch error on {str(node)}")
+            raise TypeError(
+                f"Unrecognized AST node type: '{type(node).__name__}'. Node: {node}"
+            )
