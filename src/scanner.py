@@ -73,6 +73,19 @@ class Token:
 
 
 def scan(source: str) -> List[Token]:
+    """
+    Converts source code text into a list of tokens, representing syntactic elements like
+    keywords, operators, literals, and identifiers.
+
+    Args:
+        source (str): The source code to tokenize.
+
+    Returns:
+        List[Token]: The list of tokens extracted from the source code.
+
+    Raises:
+        Exception: If an unrecognized character is encountered in the source.
+    """
     tokens: List[Token] = []
     counter: int = 0
     line: int = 1

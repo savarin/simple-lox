@@ -11,6 +11,19 @@ import statem
 
 
 def format(node: Union[expr.Expr, statem.Statem]) -> str:
+    """
+    Converts an AST node into a readable string format. This is useful for debugging and
+    displaying the structure of parsed code.
+
+    Args:
+        node (Union[expr.Expr, statem.Statem]): The AST node to format.
+
+    Returns:
+        str: The string representation of the AST node.
+
+    Raises:
+        Exception: If the node type is not recognized.
+    """
     match node:
         case expr.Call(callee, arguments):
             args = ", ".join([f"{format(arg)}" for arg in arguments])

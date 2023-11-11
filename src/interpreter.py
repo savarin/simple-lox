@@ -20,6 +20,15 @@ class Return(Exception):
 
 
 def interpret(statements: List[statem.Statem]) -> List[Optional[int]]:
+    """
+    Interprets a list of statements (AST nodes).
+
+    Args:
+        statements (List[statem.Statem]): A list of AST nodes to interpret.
+
+    Returns:
+        List[Optional[int]]: The results of interpreting the statements.
+    """
     environment: Environment = {}
     result: List[Optional[int]] = []
 
@@ -30,6 +39,16 @@ def interpret(statements: List[statem.Statem]) -> List[Optional[int]]:
 
 
 def execute(statement: statem.Statem, environment: Environment) -> List[Optional[int]]:
+    """
+    Executes a single statement within the given environment.
+
+    Args:
+        statement (statem.Statem): The statement to execute.
+        environment (Environment): The current environment/state of the interpreter.
+
+    Returns:
+        List[Optional[int]]: The result of the statement execution.
+    """
     match statement:
         case statem.Block(statements):
             result: List[Optional[int]] = []
@@ -80,6 +99,16 @@ def execute(statement: statem.Statem, environment: Environment) -> List[Optional
 def evaluate(
     expression: expr.Expr, environment: Environment
 ) -> int | bool | statem.Function:
+    """
+    Evaluates an expression within the given environment.
+
+    Args:
+        expression (expr.Expr): The expression to evaluate.
+        environment (Environment): The current environment/state.
+
+    Returns:
+        int | bool | statem.Function: The result of the expression evaluation.
+    """
     match expression:
         case expr.Call(callee, arguments):
             call_eval = evaluate(callee, environment)
@@ -118,6 +147,16 @@ def evaluate(
 
 
 def get(environment: Environment, name: str) -> int | statem.Function:
+    """
+    Retrieves a value from the environment based on the given name.
+
+    Args:
+        environment (Environment): The current environment/state of the interpreter.
+        name (str): The name of the variable or function to retrieve.
+
+    Returns:
+        int | statem.Function: The value associated with the name.
+    """
     if name in environment:
         value = environment[name]
 
@@ -136,6 +175,17 @@ def get(environment: Environment, name: str) -> int | statem.Function:
 def call(
     callee: statem.Function, arguments: List[int], environment: Environment
 ) -> int:
+    """
+    Executes a function call with the given arguments in the specified environment.
+
+    Args:
+        callee (statem.Function): The function to be called.
+        arguments (List[int]): The arguments to be passed to the function.
+        environment (Environment): The current environment/state of the interpreter.
+
+    Returns:
+        int: The result of the function call.
+    """
     outer: Environment = {"environment": environment}
 
     for i, parameter in enumerate(callee.parameters):
