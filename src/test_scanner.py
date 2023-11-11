@@ -1,3 +1,8 @@
+"""
+The test_scanner.py module includes unit tests for the scanner.py module. It verifies that the lexer
+correctly tokenizes different strings of source code into the expected sequences of tokens.
+"""
+
 from scanner import TokenType
 import scanner
 

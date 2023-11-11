@@ -1,3 +1,8 @@
+"""
+The test_formatter.py module provides unit tests for the formatter.py module, ensuring the correct
+conversion of AST nodes to their string representations.
+"""
+
 from expr import Operator
 import expr
 import formatter

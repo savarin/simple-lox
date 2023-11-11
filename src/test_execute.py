@@ -1,3 +1,8 @@
+"""
+The test_execute.py module contains tests for the execution functionality, primarily focusing on the
+interpreter.py module. It checks the correctness of program execution and evaluation of expressions.
+"""
+
 from typing import List, Optional
 
 import interpreter

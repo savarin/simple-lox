@@ -1,3 +1,9 @@
+"""
+The scanner.py module, also known as the lexer, is responsible for breaking down the source code
+text into a sequence of tokens. These tokens represent the syntactic elements like keywords,
+operators, literals, and identifiers, which are then used by the parser.py module to create the AST.
+"""
+
 from typing import Dict, List
 import dataclasses
 import enum

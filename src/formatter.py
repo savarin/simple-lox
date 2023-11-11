@@ -1,3 +1,9 @@
+"""
+The formatter.py module provides functionality to convert the nodes of the abstract syntax tree
+(AST) back into a readable string format. This is useful for debugging and displaying the structure
+of parsed code.
+"""
+
 from typing import Union
 
 import expr

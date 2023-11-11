@@ -1,3 +1,10 @@
+"""
+The parser.py module is responsible for converting a sequence of tokens, provided by the scanner.py
+module, into an abstract syntax tree (AST). This AST represents the structure and syntax of the
+programming language being interpreted. The parser handles constructs like variable declarations,
+function definitions, and control flow statements.
+"""
+
 from typing import List, Tuple
 
 from expr import Operator

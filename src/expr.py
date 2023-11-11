@@ -1,3 +1,9 @@
+"""
+The expr.py module defines the classes representing expression nodes in the abstract syntax tree
+(AST). These include basic constructs such as integers, names, and more complex ones like binary
+operations and function calls.
+"""
+
 from typing import List
 import dataclasses
 import enum

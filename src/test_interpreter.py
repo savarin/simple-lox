@@ -1,3 +1,9 @@
+"""
+The test_interpreter.py module contains unit tests for the interpreter.py module. It focuses on
+testing the interpreter's ability to correctly execute and evaluate various statements and
+expressions.
+"""
+
 from expr import Operator
 import expr
 import interpreter

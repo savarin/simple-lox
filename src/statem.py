@@ -1,3 +1,9 @@
+"""
+The statem.py module defines various statement classes used in the abstract syntax tree (AST). This
+includes statements like variable declarations, control flow statements (if, else), function
+definitions, and return statements.
+"""
+
 from typing import List, Optional
 import dataclasses
 

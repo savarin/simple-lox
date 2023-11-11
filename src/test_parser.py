@@ -1,3 +1,9 @@
+"""
+The test_parser.py module contains unit tests for the parser.py module. It tests the parser's
+ability to correctly convert sequences of tokens into the abstract syntax tree (AST) for various
+syntactic constructs.
+"""
+
 from expr import Operator
 from scanner import TokenType
 import expr
