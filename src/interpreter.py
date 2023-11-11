@@ -16,6 +16,13 @@ Environment = Dict[str, Union[int, statem.Function, "Environment"]]
 
 @dataclasses.dataclass
 class Return(Exception):
+    """
+    An exception class used to represent a 'return' statement during interpretation.
+
+    Attributes:
+        value (Optional[int]): The value to be returned by the 'return' statement.
+    """
+
     value: Optional[int]
 
 

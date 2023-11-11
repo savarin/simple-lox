@@ -67,6 +67,15 @@ keywords: Dict[str, TokenType] = {
 
 @dataclasses.dataclass
 class Token:
+    """
+    Represents a lexical token with a specific type, value, and line number.
+
+    Attributes:
+        token_type (TokenType): The type of the token (e.g., INTEGER, NAME).
+        value (str): The string value of the token.
+        line (int): The line number in the source code where the token appears.
+    """
+
     token_type: TokenType
     value: str
     line: int
