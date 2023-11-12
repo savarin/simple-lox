@@ -40,7 +40,7 @@ class TokenType(enum.Enum):
     EOF = "EOF"
 
 
-literals: Dict[str, TokenType] = {
+LITERALS: Dict[str, TokenType] = {
     "{": TokenType.BRACE_LEFT,
     "}": TokenType.BRACE_RIGHT,
     ",": TokenType.COMMA,
@@ -56,7 +56,7 @@ literals: Dict[str, TokenType] = {
 }
 
 
-keywords: Dict[str, TokenType] = {
+KEYWORDS: Dict[str, TokenType] = {
     "func": TokenType.FUNC,
     "else": TokenType.ELSE,
     "if": TokenType.IF,
@@ -117,7 +117,7 @@ def scan(source: str) -> List[Token]:
                 counter += 1
 
             name = source[start:counter]
-            token_type = keywords.get(name, TokenType.NAME)
+            token_type = KEYWORDS.get(name, TokenType.NAME)
 
             tokens.append(Token(token_type, name, line))
 
@@ -131,8 +131,8 @@ def scan(source: str) -> List[Token]:
             tokens.append(Token(TokenType.INTEGER, source[start:counter], line))
 
         # Literals
-        elif source[counter] in literals:
-            tokens.append(Token(literals[source[counter]], source[counter], line))
+        elif source[counter] in LITERALS:
+            tokens.append(Token(LITERALS[source[counter]], source[counter], line))
             counter += 1
 
         else:
